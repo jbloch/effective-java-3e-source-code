@@ -3,10 +3,10 @@ package effectivejava.chapter11.item83;
 // Initialization styles - Pages 333-
 public class Initialization {
 
-    // Normal initialization of an instance field - Page 282
+    // Normal initialization of an instance field4 - Page 282
     private final FieldType field1 = computeFieldValue();
 
-    // Lazy initialization of instance field - synchronized accessor - Page 333
+    // Lazy initialization of instance field4 - synchronized accessor - Page 333
     private FieldType field2;
     private synchronized FieldType getField2() {
         if (field2 == null)
@@ -27,14 +27,16 @@ public class Initialization {
 
     private FieldType getField4() {
         FieldType result = field4;
-        if (result == null) {  // First check (no locking)
-            synchronized(this) {
-                if (field4 == null)  // Second check (with locking)
-                    field4 = result = computeFieldValue();
-            }
+        if (result != null)    // First check (no locking)
+            return result;
+
+        synchronized(this) {
+            if (field4 == null) // Second check (with locking)
+                field4 = computeFieldValue();
+            return field4;
         }
-        return result;
     }
+
 
     // Single-check idiom - can cause repeated initialization! - Page 334
     private volatile FieldType field5;

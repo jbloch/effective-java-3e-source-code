@@ -29,9 +29,9 @@ public class RunTests {
                 } catch (Throwable wrappedExc) {
                     Throwable exc = wrappedExc.getCause();
                     int oldPassed = passed;
-                    Class<? extends Exception>[] excTypes =
+                    Class<? extends Throwable>[] excTypes =
                             m.getAnnotation(ExceptionTest.class).value();
-                    for (Class<? extends Exception> excType : excTypes) {
+                    for (Class<? extends Throwable> excType : excTypes) {
                         if (excType.isInstance(exc)) {
                             passed++;
                             break;
