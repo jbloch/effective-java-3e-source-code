@@ -1,7 +1,7 @@
-package effectivejava.chapter5.item32;
+package effectivejava.chapter5.item31;
 import java.util.*;
 
-// Generic stack with bulk methods using wildcard types - Pages 138-140
+// Generic stack with bulk methods using wildcard types (Pages 139-41)
 public class Stack<E> {
     private E[] elements;
     private int size = 0;
@@ -63,11 +63,11 @@ public class Stack<E> {
 
     // Little program to exercise our generic Stack
     public static void main(String[] args) {
-        Stack<Number> numberStack = new Stack<Number>();
+        Stack<Number> numberStack = new Stack<>();
         Iterable<Integer> integers = Arrays.asList(3, 1, 4, 1, 5, 9);
         numberStack.pushAll(integers);
 
-        Collection<Object> objects = new ArrayList<Object>();
+        Collection<Object> objects = new ArrayList<>();
         numberStack.popAll(objects);
 
         System.out.println(objects);

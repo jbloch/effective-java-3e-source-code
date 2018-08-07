@@ -2,9 +2,8 @@ package effectivejava.chapter5.item33;
 import java.lang.annotation.*;
 import java.lang.reflect.*;
 
-// Use of asSubclass to safely cast to a bounded type token - Page 146
+// Use of asSubclass to safely cast to a bounded type token (Page 155)
 public class PrintAnnotation {
-    // Use of asSubclass to safely cast to a bounded type token
     static Annotation getAnnotation(AnnotatedElement element,
                                     String annotationTypeName) {
         Class<?> annotationType = null; // Unbounded type token
@@ -14,7 +13,7 @@ public class PrintAnnotation {
             throw new IllegalArgumentException(ex);
         }
         return element.getAnnotation(
-            annotationType.asSubclass(Annotation.class));
+                annotationType.asSubclass(Annotation.class));
     }
 
     // Test program to print named annotation of named class

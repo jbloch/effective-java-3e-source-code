@@ -1,34 +1,32 @@
 package effectivejava.chapter5.item33;
 import java.util.*;
 
-// Typesafe heterogeneous container - Pages 142-145
+// Typesafe heterogeneous container pattern (Pages 151-4)
 public class Favorites {
-    // Typesafe heterogeneous container pattern - implementation
-    private Map<Class<?>, Object> favorites = 
-        new HashMap<Class<?>, Object>();
+    private Map<Class<?>, Object> favorites = new HashMap<>();
 
     public <T> void putFavorite(Class<T> type, T instance) {
-        if (type == null)
-            throw new NullPointerException("LifeCycle is null");
-        favorites.put(type, instance);
+        favorites.put(Objects.requireNonNull(type), instance);
     }
 
     public <T> T getFavorite(Class<T> type) {
         return type.cast(favorites.get(type));
     }
 
+//    // Achieving runtime type safety with a dynamic cast
+//    public <T> void putFavorite(Class<T> type, T instance) {
+//        favorites.put(Objects.requireNonNull(type), type.cast(instance));
+//    }
 
-    // Typesafe heterogeneous container pattern - client
     public static void main(String[] args) {
         Favorites f = new Favorites();
         f.putFavorite(String.class, "Java");
         f.putFavorite(Integer.class, 0xcafebabe);
         f.putFavorite(Class.class, Favorites.class);
-
         String favoriteString = f.getFavorite(String.class);
         int favoriteInteger = f.getFavorite(Integer.class);
         Class<?> favoriteClass = f.getFavorite(Class.class);
         System.out.printf("%s %x %s%n", favoriteString,
-                          favoriteInteger, favoriteClass.getName());
+                favoriteInteger, favoriteClass.getName());
     }
 }

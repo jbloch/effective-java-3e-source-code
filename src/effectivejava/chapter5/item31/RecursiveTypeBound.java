@@ -1,7 +1,7 @@
-package effectivejava.chapter5.item32;
+package effectivejava.chapter5.item31;
 import java.util.*;
 
-// Using a recursive type bound with wildcards - Page 138-139
+// Using a recursive type bound with wildcards (Page 143)
 public class RecursiveTypeBound {
     public static <E extends Comparable<? super E>> E max(
         List<? extends E> list) {

@@ -3,7 +3,7 @@ import effectivejava.chapter5.item29.EmptyStackException;
 
 import java.util.Arrays;
 
-// Generic stack using E[] - Pages 130-133
+// Generic stack using E[] (Pages 130-3)
 public class Stack<E> {
     private E[] elements;
     private int size = 0;

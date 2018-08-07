@@ -1,7 +1,7 @@
 package effectivejava.chapter5.item30;
 import java.util.*;
 
-// Generic union method and program to exercise it - pages 135-6
+// Generic union method and program to exercise it  (Pages 135-6)
 public class Union {
 
     // Generic method

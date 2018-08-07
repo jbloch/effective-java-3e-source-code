@@ -1,10 +1,8 @@
 package effectivejava.chapter5.item30;
 
-// Generic singleton factory staticfactory - Pages 131-132
-
 import java.util.function.UnaryOperator;
 
-// Generic singleton factory pattern (Page 136)
+// Generic singleton factory pattern (Page 136-7)
 public class GenericSingletonFactory {
     // Generic singleton factory pattern
     private static UnaryOperator<Object> IDENTITY_FN = (t) -> t;

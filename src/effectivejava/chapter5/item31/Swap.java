@@ -1,13 +1,13 @@
-package effectivejava.chapter5.item32;
+package effectivejava.chapter5.item31;
 import java.util.*;
 
-// Private helper staticfactory for wildcard capture - Pages 139-140
+// Private helper method for wildcard capture (Page 145)
 public class Swap {
     public static void swap(List<?> list, int i, int j) {
         swapHelper(list, i, j);
     }
 
-    // Private helper staticfactory for wildcard capture
+    // Private helper method for wildcard capture
     private static <E> void swapHelper(List<E> list, int i, int j) {
         list.set(i, list.set(j, list.get(i)));
     }

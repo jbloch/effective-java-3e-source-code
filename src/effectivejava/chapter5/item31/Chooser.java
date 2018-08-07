@@ -1,10 +1,11 @@
-package effectivejava.chapter5.item32;
+package effectivejava.chapter5.item31;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
+// Wildcard type for parameter that serves as an T producer (page 141)
 public class Chooser<T> {
     private final List<T> choiceList;
     private final Random rnd = new Random();

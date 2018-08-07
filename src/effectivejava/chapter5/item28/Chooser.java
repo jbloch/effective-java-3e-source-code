@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-// List-based Chooser - typesafe (Page 120)
+// List-based Chooser - typesafe (Page 129)
 public class Chooser<T> {
     private final List<T> choiceList;
 
@@ -17,5 +17,16 @@ public class Chooser<T> {
     public T choose() {
         Random rnd = ThreadLocalRandom.current();
         return choiceList.get(rnd.nextInt(choiceList.size()));
+    }
+
+    public static void main(String[] args) {
+        List<Integer> intList = List.of(1, 2, 3, 4, 5, 6);
+
+        Chooser<Integer> chooser = new Chooser<>(intList);
+
+        for (int i = 0; i < 10; i++) {
+            Number choice = chooser.choose();
+            System.out.println(choice);
+        }
     }
 }

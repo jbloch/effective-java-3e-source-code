@@ -1,9 +1,8 @@
-package effectivejava.chapter5.item32;
+package effectivejava.chapter5.item31;
 import java.util.*;
 
-// Generic union staticfactory with wildcard types - Pages 137-138
+// Generic union method with wildcard types for enhanced flexibility (Pages 142-3)
 public class Union {
-
     public static <E> Set<E> union(Set<? extends E> s1,
                                    Set<? extends E> s2) {
         Set<E> result = new HashSet<E>(s1);
@@ -24,6 +23,9 @@ public class Union {
         doubles.add(6.0); 
 
         Set<Number> numbers = union(integers, doubles);
+
+//      // Explicit type parameter - required prior to Java 8
+//      Set<Number> numbers = Union.<Number>union(integers, doubles);
 
         System.out.println(numbers);
     }
