@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toMap;
 
-// Enum type with constant-specific class bodies and data  (Page 161)
+// Enum type with constant-specific class bodies and data (Page 163-4)
 public enum Operation {
     PLUS("+") {
         public double apply(double x, double y) { return x + y; }
@@ -27,7 +27,7 @@ public enum Operation {
 
     public abstract double apply(double x, double y);
 
-    // Implementing a fromString method on an enum type
+    // Implementing a fromString method on an enum type (Page 164)
     private static final Map<String, Operation> stringToEnum =
             Stream.of(values()).collect(
                     toMap(Object::toString, e -> e));

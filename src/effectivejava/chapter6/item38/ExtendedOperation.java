@@ -1,7 +1,7 @@
 package effectivejava.chapter6.item38;
 import java.util.*;
 
-// Emulated extension enum - (Pages 175-7)
+// Emulated extensible enum (Pages 176-9)
 public enum ExtendedOperation implements Operation {
     EXP("^") {
         public double apply(double x, double y) {
@@ -21,7 +21,7 @@ public enum ExtendedOperation implements Operation {
         return symbol;
     }
 
-     // WRITE DESCR ***
+//    // Using an enum class object to represent a collection of extended enums (page 178)
 //    public static void main(String[] args) {
 //        double x = Double.parseDouble(args[0]);
 //        double y = Double.parseDouble(args[1]);
@@ -34,7 +34,7 @@ public enum ExtendedOperation implements Operation {
 //                    x, op, y, op.apply(x, y));
 //    }
 
-    // WRITE DESCR ***
+    // Using a collection instance to represent a collection of extended enums (page 178)
     public static void main(String[] args) {
         double x = Double.parseDouble(args[0]);
         double y = Double.parseDouble(args[1]);

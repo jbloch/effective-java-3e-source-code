@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
 
-// Using a nested EnumMap to associate data with enum pairs - (Pages 172-3)
+// Using a nested EnumMap to associate data with enum pairs - (Pages 174-5)
 public enum Phase {
     SOLID, LIQUID, GAS;
     public enum Transition {
@@ -12,7 +12,7 @@ public enum Phase {
         BOIL(LIQUID, GAS), CONDENSE(GAS, LIQUID),
         SUBLIME(SOLID, GAS), DEPOSIT(GAS, SOLID);
 
- // Adding a new phase (Page 173)
+//        // Adding a new phase (Page 175)
 //        SOLID, LIQUID, GAS, PLASMA;
 //        public enum Transition {
 //            MELT(SOLID, LIQUID), FREEZE(LIQUID, SOLID),
@@ -33,6 +33,7 @@ public enum Phase {
                 () -> new EnumMap<>(Phase.class),
                 toMap(t -> t.to, t -> t,
                         (x, y) -> y, () -> new EnumMap<>(Phase.class))));
+        
         public static Transition from(Phase from, Phase to) {
             return m.get(from).get(to);
         }
@@ -40,10 +41,12 @@ public enum Phase {
 
     // Simple demo program - prints a sloppy table
     public static void main(String[] args) {
-        for (Phase src : Phase.values())
-            for (Phase dst : Phase.values())
-                if (src != dst)
-                    System.out.printf("%s to %s : %s %n", src, dst,
-                            Transition.from(src, dst));
+        for (Phase src : Phase.values()) {
+            for (Phase dst : Phase.values()) {
+                Transition transition = Transition.from(src, dst);
+                if (transition != null)
+                    System.out.printf("%s to %s : %s %n", src, dst, transition);
+            }
+        }
     }
 }

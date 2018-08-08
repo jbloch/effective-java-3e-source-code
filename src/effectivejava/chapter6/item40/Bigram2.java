@@ -1,17 +1,22 @@
 package effectivejava.chapter6.item40;
-import java.util.*;
 
-// Can you spot the bug? (Page 188)
-public class Bigram {
+import java.util.HashSet;
+import java.util.Set;
+
+// Fixed Bigram class (Page 189)
+public class Bigram2 {
     private final char first;
     private final char second;
 
-    public Bigram(char first, char second) {
+    public Bigram2(char first, char second) {
         this.first  = first;
         this.second = second;
     }
 
-    public boolean equals(Bigram b) {
+    @Override public boolean equals(Object o) {
+        if (!(o instanceof Bigram2))
+            return false;
+        Bigram2 b = (Bigram2) o;
         return b.first == first && b.second == second;
     }
 
@@ -20,10 +25,10 @@ public class Bigram {
     }
 
     public static void main(String[] args) {
-        Set<Bigram> s = new HashSet<>();
+        Set<Bigram2> s = new HashSet<>();
         for (int i = 0; i < 10; i++)
             for (char ch = 'a'; ch <= 'z'; ch++)
-                s.add(new Bigram(ch, ch));
+                s.add(new Bigram2(ch, ch));
         System.out.println(s.size());
     }
 }

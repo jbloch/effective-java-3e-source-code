@@ -1,6 +1,6 @@
 package effectivejava.chapter6.item35;
 
-// Enum with integer data stored in an instance field (Page 166)
+// Enum with integer data stored in an instance field (Page 168)
 public enum Ensemble {
     SOLO(1), DUET(2), TRIO(3), QUARTET(4), QUINTET(5),
     SEXTET(6), SEPTET(7), OCTET(8), DOUBLE_QUARTET(8),

@@ -1,6 +1,6 @@
 package effectivejava.chapter6.item34;
 
-// The strategy enum pattern
+// The strategy enum pattern (Page 166)
 enum PayrollDay {
     MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY,
     SATURDAY(PayType.WEEKEND), SUNDAY(PayType.WEEKEND);

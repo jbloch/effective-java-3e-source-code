@@ -1,16 +1,14 @@
-package effectivejava.chapter6.item39.repeatableannotation;
-
+package effectivejava.chapter6.item39.annotationwitharrayparameter;
 import effectivejava.chapter6.item39.markerannotation.Test;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 
-// Program to process marker annotations and repeatable annotations (Page 187)
+// Program to process marker annotations and annotations with array parameter (Page 185)
 public class RunTests {
     public static void main(String[] args) throws Exception {
         int tests = 0;
         int passed = 0;
-        Class testClass = Class.forName(args[0]);
+        Class<?> testClass = Class.forName(args[0]);
         for (Method m : testClass.getDeclaredMethods()) {
             if (m.isAnnotationPresent(Test.class)) {
                 tests++;
@@ -21,13 +19,12 @@ public class RunTests {
                     Throwable exc = wrappedExc.getCause();
                     System.out.println(m + " failed: " + exc);
                 } catch (Exception exc) {
-                    System.out.println("INVALID @Test: " + m);
+                    System.out.println("Invalid @Test: " + m);
                 }
             }
 
-            // Processing repeatable annotations (Page 187)
-            if (m.isAnnotationPresent(ExceptionTest.class)
-                    || m.isAnnotationPresent(ExceptionTestContainer.class)) {
+            // Code to process annotations with array parameter (Page 185)
+            if (m.isAnnotationPresent(ExceptionTest.class)) {
                 tests++;
                 try {
                     m.invoke(null);
@@ -35,10 +32,10 @@ public class RunTests {
                 } catch (Throwable wrappedExc) {
                     Throwable exc = wrappedExc.getCause();
                     int oldPassed = passed;
-                    ExceptionTest[] excTests =
-                            m.getAnnotationsByType(ExceptionTest.class);
-                    for (ExceptionTest excTest : excTests) {
-                        if (excTest.value().isInstance(exc)) {
+                    Class<? extends Throwable>[] excTypes =
+                            m.getAnnotation(ExceptionTest.class).value();
+                    for (Class<? extends Throwable> excType : excTypes) {
+                        if (excType.isInstance(exc)) {
                             passed++;
                             break;
                         }
@@ -49,6 +46,6 @@ public class RunTests {
             }
         }
         System.out.printf("Passed: %d, Failed: %d%n",
-                          passed, tests - passed);
+                passed, tests - passed);
     }
 }
