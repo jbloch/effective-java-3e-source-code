@@ -1,4 +1,4 @@
-package effectivejava.chapter7.item45;
+package effectivejava.chapter7.item46;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,12 +9,12 @@ import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.*;
 import static java.util.stream.Collectors.*;
 
-// Page 210, 211
+// Frequency table examples showing improper and proper use of stream (Page 210-11)
 public class Freq {
     public static void main(String[] args) throws FileNotFoundException {
         File file = new File(args[0]);
 
-        // Uses the streams API but not the paradigm--Don't do this!
+//        // Uses the streams API but not the paradigm--Don't do this!
 //        Map<String, Long> freq = new HashMap<>();
 //        try (Stream<String> words = new Scanner(file).tokens()) {
 //            words.forEach(word -> {
@@ -22,7 +22,7 @@ public class Freq {
 //            });
 //        }
 
-        // Proper use of streams to initialize a frequency table
+        // Proper use of streams to initialize a frequency table (
         Map<String, Long> freq;
         try (Stream<String> words = new Scanner(file).tokens()) {
             freq = words

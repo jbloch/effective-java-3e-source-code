@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 import static java.math.BigInteger.*;
 
-// Parallel stream-based program to generate the first 20 Mersenne primes - HANGS!!!
+// Parallel stream-based program to generate the first 20 Mersenne primes - HANGS!!! (Page 222)
 public class ParallelMersennePrimes {
     public static void main(String[] args) {
         primes().map(p -> TWO.pow(p.intValueExact()).subtract(ONE))

@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.util.stream.LongStream;
 
 public class ParallelPrimeCounting {
-    // Prime-counting stream pipeline - parallel version
+    // Prime-counting stream pipeline - parallel version (Page 225)
     static long pi(long n) {
         return LongStream.rangeClosed(2, n)
                 .parallel()

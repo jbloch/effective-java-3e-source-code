@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.groupingBy;
 
-// Overuse of streams - don't do this! - (page 205)
+// Overuse of streams - don't do this! (page 205)
 public class StreamAnagrams {
     public static void main(String[] args) throws IOException {
         Path dictionary = Paths.get(args[0]);

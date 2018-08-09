@@ -3,6 +3,7 @@ package effectivejava.chapter7.item47;
 import java.util.*;
 
 public class PowerSet {
+    // Returns the power set of an input set as custom collection (Page 218)
     public static final <E> Collection<Set<E>> of(Set<E> s) {
         List<E> src = new ArrayList<>(s);
         if (src.size() > 30)
