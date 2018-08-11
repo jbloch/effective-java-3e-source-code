@@ -1,7 +1,7 @@
 package effectivejava.chapter8.item50;
 import java.util.*;
 
-// Broken "immutable" time period class - Page 231-3
+// Broken "immutable" time period class (Pages 231-3)
 public final class Period {
     private final Date start;
     private final Date end;
@@ -31,7 +31,7 @@ public final class Period {
         return start + " - " + end;
     }
 
-//    // Repaired constructor - makes defensive copies of parameters
+//    // Repaired constructor - makes defensive copies of parameters (Page 232)
 //    public Period(Date start, Date end) {
 //        this.start = new Date(start.getTime());
 //        this.end   = new Date(end.getTime());
@@ -40,7 +40,7 @@ public final class Period {
 //            throw new IllegalArgumentException(
 //                    this.start + " after " + this.end);
 //    }
-
+//
 //    // Repaired accessors - make defensive copies of internal fields (Page 233)
 //    public Date start() {
 //        return new Date(start.getTime());

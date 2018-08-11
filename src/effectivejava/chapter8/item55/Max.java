@@ -2,9 +2,9 @@ package effectivejava.chapter8.item55;
 
 import java.util.*;
 
-// Optionals     (P. 248) OK (Checked)
+// Using Optional<T> as a return type (Pages 249-251)
 public class Max {
-//    // Returns maximum value in collection - throws exception if empty
+//    // Returns maximum value in collection - throws exception if empty (Page 249)
 //    public static <E extends Comparable<E>> E max(Collection<E> c) {
 //        if (c.isEmpty())
 //            throw new IllegalArgumentException("Empty collection");
@@ -17,7 +17,7 @@ public class Max {
 //        return result;
 //    }
 
-//    // Returns maximum value in collection as an Optional<E>
+//    // Returns maximum value in collection as an Optional<E> (Page 250)
 //    public static <E extends Comparable<E>>
 //    Optional<E> max(Collection<E> c) {
 //        if (c.isEmpty())
@@ -31,7 +31,7 @@ public class Max {
 //        return Optional.of(result);
 //    }
 
-    // Returns max val in collection as Optional<E> - uses stream
+    // Returns max val in collection as Optional<E> - uses stream (Page 250)
     public static <E extends Comparable<E>>
     Optional<E> max(Collection<E> c) {
         return c.stream().max(Comparator.naturalOrder());
@@ -40,7 +40,9 @@ public class Max {
     public static void main(String[] args) {
         List<String> words = Arrays.asList(args);
 
-        // Using an optional to provide a chosen default value
+        System.out.println(max(words));
+
+        // Using an optional to provide a chosen default value (Page 251)
         String lastWordInLexicon = max(words).orElse("No words...");
         System.out.println(lastWordInLexicon);
     }

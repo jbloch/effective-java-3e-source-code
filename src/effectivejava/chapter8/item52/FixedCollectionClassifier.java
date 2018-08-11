@@ -1,19 +1,13 @@
 package effectivejava.chapter8.item52;
+
+import java.math.BigInteger;
 import java.util.*;
-import java.math.*;
 
-// Broken! - What does this program print?  (Page 238)
-public class CollectionClassifier {
-    public static String classify(Set<?> s) {
-        return "Set";
-    }
-
-    public static String classify(List<?> lst) {
-        return "List";
-    }
-
+// Repaired  static classifier method. (Page 240)
+public class FixedCollectionClassifier {
     public static String classify(Collection<?> c) {
-        return "Unknown Collection";
+        return c instanceof Set  ? "Set" :
+                c instanceof List ? "List" : "Unknown Collection";
     }
 
     public static void main(String[] args) {
