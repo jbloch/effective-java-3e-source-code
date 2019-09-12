@@ -25,6 +25,7 @@ public class Initialization {
     // Double-check idiom for lazy initialization of instance fields - Page 334
     private volatile FieldType field4;
 
+    // NOTE: The code for this method in the first printing had a serious error (see errata for details)!
     private FieldType getField4() {
         FieldType result = field4;
         if (result != null)    // First check (no locking)
@@ -36,6 +37,7 @@ public class Initialization {
             return field4;
         }
     }
+
 
 
     // Single-check idiom - can cause repeated initialization! - Page 334
